@@ -55,5 +55,15 @@ const Perceptron = function () {
 		return m * x + b;
 	};
 
-	return { guess, train, guessLineY };
+	// draw where the perceptron think the line is
+	const drawGuessedLine = () => {
+		stroke(100);
+		// line(0, height, width, 0);
+
+		let p1 = new Point(-1, perceptron.guessLineY(-1));
+		let p2 = new Point(1, perceptron.guessLineY(1));
+		line(p1.getPixels().x, p1.getPixels().y, p2.getPixels().x, p2.getPixels().y);
+	};
+
+	return { guess, train, guessLineY, drawGuessedLine };
 };
