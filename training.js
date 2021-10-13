@@ -2,7 +2,8 @@ const Point = function (x, y) {
 	//coordinates in cartesian plane
 	x = x ?? random(-1, 1);
 	y = y ?? random(-1, 1);
-	const target = x > y ? 1 : -1;
+
+	const target = y > solveLine(x) ? 1 : -1; //1 if point is above the line, -1 instead
 
 	const show = () => {
 		stroke(0);
@@ -16,4 +17,9 @@ const Point = function (x, y) {
 	};
 
 	return { x, y, target, show, coordinates: [x, y], getPixels };
+};
+
+const solveLine = (x) => {
+	//y = mx + b
+	return 0.3 * x + 0.2;
 };
