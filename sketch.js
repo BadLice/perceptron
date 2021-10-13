@@ -11,7 +11,7 @@ function setup() {
 function draw() {
 	background(255);
 	stroke(0);
-	line(0, 0, width, height);
+	line(0, height, width, 0);
 	points.forEach((p) => {
 		p.show();
 		noStroke();
@@ -21,7 +21,7 @@ function draw() {
 		} else {
 			fill(255, 0, 0);
 		}
-		ellipse(p.x, p.y, 5);
+		ellipse(p.getPixels().x, p.getPixels().y, 5);
 	});
 
 	//supervised training of perceptron
