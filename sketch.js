@@ -10,7 +10,7 @@ function setup() {
 
 	perceptron = new Perceptron();
 
-	points = Array.from({ length: 500 }, () => new Point());
+	points = Array.from({ length: 10 }, () => new Point());
 	//push limit case 0,0 to test bias (top left corner point)
 	points.push(new Point(0, 0));
 }
@@ -26,6 +26,8 @@ function draw() {
 	});
 
 	trainPerceptron();
+
+	addPoints();
 }
 
 //display green point if guess of perceptron is right else red point
@@ -45,4 +47,11 @@ function trainPerceptron() {
 	pointIndex = (pointIndex + 1) % (points.length - 1);
 	let p = points[pointIndex];
 	perceptron.train(p.coordinates, p.target);
+}
+
+function addPoints() {
+	//add 10 points every training cycle
+	if (pointIndex === 0 && points.length < 600) {
+		points = [...points, ...Array.from({ length: 10 }, () => new Point())];
+	}
 }
